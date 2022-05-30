@@ -1,0 +1,21 @@
+Argoknot can (among other things to come) convert CSV files to JSON. The input
+is a CSV file which can contain the following fields:
+	title 
+	composers 
+	lyricists 
+	performers
+	album 
+	tune 
+	keywords
+	year 
+
+In its current form, it's restricted to one value per field. The command line specifies the order of the fields.
+
+Command line arguments:
+
+--input		Path to the input file
+--output	Path to the output file to create. Will overwrite an existing file,.
+--fields	Followed by field names indicating the order of the comma-separated fields
+
+python Argoknot/song_csv_to_json.py --input foo.csv --output bar.js --fields title composer year
+
