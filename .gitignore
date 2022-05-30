@@ -1,0 +1,6 @@
+*~
+*.bak
+*.log
+*.tmp
+*.pyc
+__pycache__

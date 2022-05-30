@@ -1,0 +1,41 @@
+The Argoknot project centers on a way of representing song data as JSON.
+The initial focus is on filk songs, the folk music of science fiction and
+fandom, but it's applicable to songs of any kind.
+
+A song file consists of any number of JSON song objects. A song object
+can have any or all of the following keys. A "title" value is mandatory;
+all others are optional.
+
+	title
+	composers
+	lyricists
+	performers
+	album
+	tune
+	keywords
+	year
+
+Any key may be associated with a string value. The following keys may take 
+an array of strings:
+
+	composers
+	lyricsts
+	performers
+	keywords
+
+Question: Should other keywords also allow arrays? The "title" value should
+be just one string, since it functions as an identifier for the song,
+and it's not clear if "tune" and "year" make sense with multiple values,
+but it would be more general to allow multiple values for everything
+except the title. In this case, the keys should be changed to their
+plural form.
+
+The lack of globally unique identifiers is intentional; they require an
+authority, which complicates the coordination of independent projects.
+Different songs may collide by having the same title.
+
+What other fields should be allowed? 
+
+The implementation should be extensible. Implementers should be able to
+add their own fields. Other implementations can ignore them but shouldn't
+break because of unknown fields.
