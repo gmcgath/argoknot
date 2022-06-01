@@ -54,6 +54,7 @@ class ReadSongCsv :
 				self.year_idx = i
 
 
+# Read a CSV file at a specified path
 	def read_csv_file(self, fil) :
 		songs = []
 		if not exists(fil) :
