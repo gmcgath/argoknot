@@ -18,13 +18,14 @@ from code.song import *
 
 class ReadSongCsv :
 
-	title_idx = -1;
-	comp_idx = -1;
-	lyr_idx = -1;
-	album_idx = -1;
-	tune_idx = -1;
-	keyword_idx = -1;
-	year_idx = -1;
+	title_idx = -1
+	comp_idx = -1
+	lyr_idx = -1
+	album_idx = -1
+	tune_idx = -1
+	keyword_idx = -1
+	comment_idx = -1
+	year_idx = -1
 
 	def __init__(self, mapping) :
 		# All fields default to the empty string if not in the mapping
@@ -34,6 +35,7 @@ class ReadSongCsv :
 		album = ""
 		tune = ""
 		keyword = ""
+		comment = ""
 		year = ""
 		mapping_len = len(mapping)
 		for i in range(mapping_len) :
@@ -50,6 +52,8 @@ class ReadSongCsv :
 				self.tune_idx = i
 			elif item == "keyword" :
 				self.keyword_idx = i
+			elif item == "comment" :
+				self.comment_idx = i
 			elif item == "year" :
 				self.year_idx = i
 
@@ -88,11 +92,22 @@ class ReadSongCsv :
 					keyword = row[self.keyword_idx]
 				else  :
 					keyword = "" 
+				if self.comment_idx >= 0 and self.comment_idx < row_len :
+					comment = row[self.comment_idx]
+				else  :
+					comment = "" 
 				if self.year_idx >= 0 and self.year_idx < row_len :
 					year = row[self.year_idx] 
 				else  :
 					year = ""
 
-				song = Song(ttl, comp, lyr, alb, tune, keyword, year)
+				song = Song(ttl=ttl, \
+					cmp=comp, \
+					lyr=lyr, \
+					alb=alb, \
+					tun=tune, \
+					kwd=keyword, \
+					cmt=comment, \
+					yr=year)
 				songs.append(song)
 		return songs

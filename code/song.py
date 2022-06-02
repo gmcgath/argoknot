@@ -18,10 +18,11 @@ class Song:
 	album = []
 	tune = []
 	keywords = []
+	comment = ""
 	year = 0
 
 	def __init__(self, ttl, cmp="", lyr="", per="", alb="", \
-			tun="", kwd="", yr=0) :
+			tun="", kwd="", cmt="", yr=0) :
 		self.title = ttl
 		self.composers = cmp
 		self.lyricists = lyr
@@ -29,6 +30,7 @@ class Song:
 		self.album = alb
 		self.tune = tun
 		self.keywords = kwd
+		self.comment = cmt
 		self.year = yr
 
 #Some validation on a Song object. This will do things like exclude
@@ -53,6 +55,7 @@ class SongJSONEncoder(JSONEncoder) :
 			"album": song.album,
 			"tune": song.tune,
 			"keywords": song.keywords,
+			"comment": song.comment,
 			"year": song.year
 		}
 		return retval
